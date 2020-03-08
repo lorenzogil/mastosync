@@ -333,13 +333,7 @@ class TwitterAPI:
         return data
 
     def get_posts(self, screen_name: str) -> List[Post]:
-        if os.path.exists('twitter.json'):
-            with open('twitter.json', 'rt') as f:
-                tweets_list = json.load(f)
-        else:
-            tweets_list = self.get_tweets(screen_name)
-            with open('twitter.json', 'wt') as f:
-                json.dump(tweets_list, f)
+        tweets_list = self.get_tweets(screen_name)
 
         posts = [self._tweet_to_post(tweet)
                  for tweet in tweets_list
@@ -412,13 +406,7 @@ class MastodonAPI:
         return data
 
     def get_posts(self, account_id: str) -> List[Post]:
-        if os.path.exists('mastodon.json'):
-            with open('mastodon.json', 'rt') as f:
-                toots_list = json.load(f)
-        else:
-            toots_list = self.get_toots(account_id)
-            with open('mastodon.json', 'wt') as f:
-                json.dump(toots_list, f)
+        toots_list = self.get_toots(account_id)
 
         posts = [self._toot_to_post(toot)
                  for toot in toots_list
