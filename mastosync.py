@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
 # mastosync allows you to sync your Mastodon toots to your Twitter account.
 # Copyright (C) 2020 Lorenzo Gil Sanchez
